@@ -1,0 +1,251 @@
+nav{
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(247,247,247);
+    line-height: 1em;
+    margin-bottom: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+nav li a{
+    display: block;
+    float: left;
+    background-color: rgb(247,247,247);
+    padding: 1em;
+    color: black;
+    font-size: 1em;
+    vertical-align: middle;
+}
+nav li a:hover{
+    background-color: black;
+    color: rgb(247,247,247);
+}
+@font-face{
+    font-family: "Construcktiv";
+    src: local("Construcktiv"),
+         url(Construcktiv.ttf);
+}
+header figure, header img{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+    margin-top: 1.5em;
+}
+figcaption{
+    position: absolute;
+    color: white;
+    top: 10vw;
+    left: 1vw;
+    font-size: 6vw;
+    font-family: Construcktiv;
+    z-index: 1;
+    text-transform: uppercase;
+    text-shadow: 0.1em 0.1em black;
+}
+figcaption div{
+    text-indent: 3em;
+}
+article{
+    margin-top: 2em;
+}
+article section{
+    background-color: rgb(247,247,247);
+    color: black;
+    margin: 2em 2em 2em 2em;
+    padding: 2em;
+    position: relative;
+}
+article section:hover{
+    font-size:1.1em;
+}
+article h1{
+    text-transform: uppercase;
+    font-size: 2em;
+}
+article h1:hover{
+    font-size: 2.2em;
+}
+#ProfileImage{
+    width: 8em;
+    position: absolute;
+    filter: grayscale(100%);
+    opacity: 0.4;
+    right: 2em;
+}
+#ProfileImage:hover{
+    opacity: 1;
+}
+p{
+    margin-bottom: 1em;
+}
+#logout{
+    display: block;
+    font: 400 13.3333px Arial;
+    font-weight: 800;
+}
+#login, #logout, #addblogbtn{
+    background-color: white;
+    color: black;
+    border: 0.01em solid white;
+    padding: 1em;
+    position: absolute;
+    right: 2em;
+    margin-top: 0.5em;
+    font-weight: 800;
+}
+#addblogbtn{
+    right: 10em;
+}
+#login:hover, #logout:hover, #addblogbtn:hover{
+    transform: scale(1.1);
+}
+#addblog{
+    display: none;
+}
+form{
+    background-color: rgb(247,247,247);
+    color: black;
+    padding: 2em;
+    margin: 1em 6em;
+    position: relative;
+}
+legend{
+    font-size: 2em;
+}
+form input, form textarea{
+    border: 0.01em solid black;
+    display: block;
+    float: none;
+    margin: 1em auto;
+    padding: 0.5em;
+}
+form input[type="button"], form input[type="submit"]{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+form input[type="button"]:hover, form input[type="submit"]:hover{
+    transform: scale(1.1);
+}
+#closeaddBlog{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 1.5em;
+    background-color: transparent;
+}
+#heading{
+    position: absolute;
+    left: 1em;
+    margin-top: 0.5em;
+    background-color: white;
+    color: black;
+    padding: 0.5em;
+}
+#heading:hover{
+    background-color: black;
+    color: white;
+}
+#BLOGVIEW{
+    position: absolute;
+    top: 8em;
+    width: 100%;
+    margin: 0;
+    background-color: black;
+    color: white;
+}
+#BLOGVIEW section {
+    border: 0.1rem solid white;
+    background-color: black;
+    color: white;
+}
+#BLOGVIEW section p{
+    font-size: 1em;
+}
+#BLOGVIEW section h3{
+    font-size: 0.8em;
+}
+#editButton{
+    padding: 0.5em;
+    font-weight: bold;
+}
+#Education, #Experience, #Acheivements{
+    position: relative;
+    height: 64vw;
+}
+.eduImg, .expImg, .achImg{
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    right: 25%;
+}
+.scrollRight, .scrollLeft{
+    background-color: transparent;
+    color: grey;
+    font-size: 2em;
+    position: absolute;
+    font-family: FreeMono, monospace;
+    top: 45%;
+}
+.scrollRight{
+    right: 2%;
+}
+.scrollLeft{
+    left: 2%;
+}
+.scrollLeft:hover, .scrollRight:hover{
+    transform: scale(1.2);
+}
+#Education li, #Experience li, #Acheivements li{
+    display: none;
+}
+#Education li:first-child, #Experience  li:first-child, #Acheivements li:first-child{
+    display: list-item;
+}
+ul li figure figcaption, ul li figure figcaption img{
+    width: 35%;
+    font-size: 2vw;
+    left: 40%;
+    top: 0;
+    text-shadow: none;
+}
+ul li figure figcaption{
+    background-color: rgb(0,0,0,0.8);
+    opacity: 0;
+}
+ul li figure figcaption:hover{
+    opacity: 1;
+}
+#Experience li figure figcaption, #Acheivements li figure figcaption{
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 1vw;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+}
+.horizontalImage figure img{
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    top: 15%;
+}
+.horizontalImage figure figcaption{
+    top: 15%;
+    left: 55%;
+}
+#CVLink a{
+    color: black;
+    text-transform: uppercase;
+}
+footer{
+    border: solid 0.1em white;
+    margin: 0 2em 2em 2em;
+    padding: 1em;
+}
+footer p{
+    margin-top: 1em;
+}

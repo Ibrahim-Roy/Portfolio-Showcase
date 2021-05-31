@@ -1,0 +1,70 @@
+@import '~style/helpers';
+
+@keyframes slidein {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100%   {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.container{
+  display: block;
+  margin-bottom: 40px;
+  animation: slidein 1s ease-out;
+}
+
+.currentTemp {
+  margin: auto;
+  font-size: 3rem;
+  font-family: Verdana, sans-serif;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  height: 100%;
+}
+
+.currentTempContainer {
+  margin: auto;
+  object-fit: contain;
+  justify-content: center;
+  width: 50%;
+  height: 100%; //Manually set this now to the width - need to change to automatic
+  position: relative;
+}
+
+.currentDetails{
+  letter-spacing: 2px;
+}
+
+.weatherContainer{
+  display: block;
+  margin: 30px;
+  height: 200px;
+  padding-top: 30px;
+}
+
+.weatherContainerTop{
+  display: flex;
+}
+
+.weatherContainerBottom{
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  text-transform: capitalize;
+  //background: radial-gradient(ellipse at center, #0b0b68 10%, transparent 66%);
+}
+
+.weatherIcon{
+  object-fit: none;
+  justify-content: center;
+  width: 50%;;
+  height: 100px;
+}

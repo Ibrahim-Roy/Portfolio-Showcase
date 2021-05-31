@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=PC
+comment1.params=name\ weapon\ armor
+comment1.target=PC(java.lang.String,\ Weapon,\ Armor)
+comment2.params=
+comment2.target=void\ wieldWeapon()
+comment2.text=Shows\ a\ selection\ of\ weapons\ that\ can\ be\ wielded\ to\r\n\ \ \ \ \ \ \ temporary\ increase\ strength\ or\ range\r\nWeapons\ improve\ skills\ but\ won't\ effect\ the\ level
+comment3.params=
+comment3.target=void\ wieldArmor()
+comment3.text=Shows\ a\ selection\ of\ armor\ that\ can\ be\ wielded\ to\ temporary\ increase\ defence\r\nArmor\ improves\ skills\ but\ won't\ effect\ the\ level
+comment4.params=
+comment4.target=java.lang.String\ scout()
+comment5.params=evt
+comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=6

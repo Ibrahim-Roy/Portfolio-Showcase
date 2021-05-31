@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=NPC
+comment1.params=
+comment1.target=java.lang.String\ scout()
+comment2.params=nname\ strength\ range\ defence\ armor\ weapon
+comment2.target=void\ initialise(java.lang.String,\ double,\ double,\ double,\ Armor,\ Weapon)
+comment3.params=ttype
+comment3.target=void\ setType(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getType()
+comment5.params=Aquirk
+comment5.target=void\ setAntiQuirk(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getAntiQuirk()
+numComments=7

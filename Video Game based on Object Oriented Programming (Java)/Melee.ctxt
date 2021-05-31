@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Melee
+comment1.params=name\ value\ level
+comment1.target=Melee(java.lang.String,\ double,\ int)
+comment2.params=
+comment2.target=java.lang.String\ printDetails()
+comment3.params=
+comment3.target=double\ getTrait()
+numComments=4

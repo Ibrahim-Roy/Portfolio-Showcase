@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=PlayerDiedException
+comment0.text=Exception\ that's\ throwed\ if\ the\ player\ dies\ and\r\nthe\ game\ needs\ to\ come\ to\ a\ halt
+comment1.params=message
+comment1.target=PlayerDiedException(java.lang.String)
+numComments=2

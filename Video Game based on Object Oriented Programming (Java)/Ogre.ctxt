@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Ogre
+comment1.params=name\ value\ armor\ weapon
+comment1.target=Ogre(java.lang.String,\ double,\ Armor,\ Weapon)
+numComments=2

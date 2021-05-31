@@ -1,0 +1,52 @@
+@keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100%   {
+      opacity: 1;
+    }
+}
+
+.forecastContainer{
+    display : block;
+    font-family: Verdana, sans-serif;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    margin: 0px 10px;
+    padding: 0 10px;
+    opacity: 0;
+    animation: fadein 1s linear 1s forwards;
+    height: 250px;
+}
+
+.forecast{
+    display : flex;
+}
+
+.weatherIcon{
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.weatherSummary{
+    margin: auto;
+    justify-content: center;
+}
+
+.weatherTemp{
+    font-size: 1.5rem;
+}
+
+.weatherCond{
+    font-size: 0.8rem;
+}
+
+.dateSummary{
+    margin: auto;
+    justify-content: center;
+}
+
+.day{
+    font-size: 0.8rem;
+}

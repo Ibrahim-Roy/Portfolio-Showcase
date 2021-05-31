@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Weapon
+comment1.params=ttype
+comment1.target=void\ setType(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getType()
+comment3.params=qquirk
+comment3.target=void\ setQuirk(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getQuirk()
+comment5.params=
+comment5.target=void\ chooseQuirk()
+comment6.params=evt
+comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=7

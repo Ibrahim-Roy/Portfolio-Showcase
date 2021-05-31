@@ -1,0 +1,40 @@
+<?php
+session_start();
+?>
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="reset.css" type="text/css">
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
+        <script src="script.js" defer></script>
+        <title>Blog</title>
+    </head>
+    <body>
+        <header>
+            <h1><a href="index.php">IBRAHIM BADAR</a><h1>
+            <?php
+                if($_SESSION['loggedIn'] == TRUE){
+                    <button id="logout" type="button">LOGOUT</button>;
+                    <button id="addblog" type="button">ADD BLOG</button>;
+                }
+                else{
+                    <button id="login" type="button" onclick="loginForm()">LOGIN</button>;
+                }
+            ?>
+        </header>
+        <aside id="addblog">
+            <form method="POST" action="">
+                <fieldset>
+                    <legend>ADD BLOG</legend>
+                    <input type="text" name="title" placeholder="Title" size="60" id="title">
+                    <textarea name="posttext" rows="8" cols="60" placeholder="Enter your text here"
+                    id="posttext"></textarea>
+                    <input type="button" value="POST" id="postButton">
+                    <input type="button" value="CLEAR" id="clearButton">
+                </fieldset>
+            </form>
+        </aside>
+    </body>
+</html>

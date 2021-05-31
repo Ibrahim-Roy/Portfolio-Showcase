@@ -1,0 +1,20 @@
+html, body, header, figure, img, figcaption, div, ul, li, a, button, nav, section, h1, article, p, form, fieldset, input, legend{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+html, body, figure{
+    background-color: black;
+    color: white;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 1em;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+ul, li, ol{
+    list-style-type: none;
+}

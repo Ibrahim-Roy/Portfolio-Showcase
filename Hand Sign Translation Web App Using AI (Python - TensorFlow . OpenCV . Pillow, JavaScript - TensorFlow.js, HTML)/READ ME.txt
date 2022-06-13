@@ -1,0 +1,54 @@
+-------------------------------------------------------
+-------------------------------------------------------
+SIGN LANGUAGE DETECTION WITH MACHINE LEARNING
+RAI MUHAMMAD IBRAHIM BADAR
+190071703
+
+FINAL YEAR PROJECT
+SUPPORTING MATERIAL
+-------------------------------------------------------
+-------------------------------------------------------
+
+The supporting material is divided in two parts:
+1. Machine Learning
+2. Web Application
+
+Machine Learning
+----------------
+This repositiory contains:
+Image Collection, Labelling and Data Augmentation.ipynb
+Installing TensorFlow.ipynb
+Training.ipynb
+TensorFlow(Folder)
+
+
+All the dependencies required to run the scripts are included
+and will be automatically installed. The order in which the 
+scripts are listed is the order of execution. Note that to run
+training.ipynb a dataset is required. The dataset used for the
+project was created from scratch but can not be submitted as its
+too large. Hence in order to run Training.ipynb a dataset will
+need to created by using the Image Collection, Lablling and Data
+Augmentation.ipynb script. Additionally, CUDA and CUDNN may need
+to be installed for TensorFlow GPU support. The scripts are ipynb
+and can be opened on Jupyter Notebook or Google Colab.
+
+The TensorFlow repository contains a frozen graph of the final model and
+its tensorflowjs version. Additionally, the metrics for training and
+evaluation are also present, these can be open with TensorBoard, TensorBoard
+is a part of TensorFlow and will be installed by the script 'Installing
+TensorFlow.ipynb'
+
+Web Application
+----------------
+This repository contains the HTML and JavaScript files used to
+create the web application. The web application has been
+deployed online and can be accessed at: 
+
+https://ibrahim-roy.github.io/Sign-Language-Detection-Web-Application/
+
+The final model created can be tested at the web application. The
+'index.html' file can be opened on a browser locally and the web
+application will work, however an internet connection is required
+as even locally the web application needs to fetch the model from
+GitHub

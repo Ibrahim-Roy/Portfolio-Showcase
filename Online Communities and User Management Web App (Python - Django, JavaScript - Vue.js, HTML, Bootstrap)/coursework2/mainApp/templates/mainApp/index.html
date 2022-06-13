@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <title>Online Communities</title>
+    </head>
+    <body>
+        {% csrf_token %}
+        <div id="myApp" class="ml-5 mr-5">
+            <br>
+            <h1 class="display-4 font-weight-bold">Online Communities</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Launch Date</th>
+                        <th scope="col">Members</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(community, index) in communities">
+                        <th scope="row">
+                            [[ index ]]
+                        </th>
+                        <td>
+                            <input v-if="community.editing" type="text" v-model="community.name">
+                            <p v-else>
+                                [[ community.name ]]
+                            </p>
+                        </td>
+                        <td>
+                            <input v-if="community.editing" type="date" v-model="community.launch_date">
+                            <p v-else>
+                                [[ community.launch_date ]]
+                            </p>
+                        </td>
+                        <td>
+                            <select class="browser-default custom-select w-100">
+                                <option v-for="member in community.members"> [[ member.name ]] </option>
+                            </select>
+                        </td>
+                        <td>
+                            <button v-if="!community.editing" @click="community.editing = true" class="btn btn-outline-secondary btn-sm">
+                                Edit
+                            </button>
+                            <button v-else @click="saveCommunityChanges(community)" class="btn btn-success btn-sm">
+                                Save
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm ml-2" @click="deleteCommunity(community)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row justify-content-center">
+                <a class="btn btn-primary" href="#addnewCommunityForm" role="button">Add New Community</a>
+            </div>
+
+            <h1 class="display-4 font-weight-bold">Users</h1>
+            <table class="table">
+                <thead>
+                    <th scope="row">#</th>
+                    <th scope="row">Name</th>
+                    <th scope="row">Username</th>
+                    <th scope="row">Date of Birth</th>
+                    <th scope="row">Age</th>
+                    <th scope="row">Joined Communities</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr v-for="(user, index) in users">
+                        <th scope="row">
+                            [[ index ]]
+                        </th>
+                        <td>
+                            <input v-if="user.editing" type="text" v-model="user.name">
+                            <p v-else>
+                                [[ user.name ]]
+                            </p>
+                        </td>
+                        <td>
+                            <input v-if="user.editing" type="text" v-model="user.username">
+                            <p v-else>
+                                [[ user.username ]]
+                            </p>
+                        </td>
+                        <td>
+                            <input v-if="user.editing" type="date" v-model="user.dob">
+                            <p v-else>
+                                [[ user.dob ]]
+                            </p>
+                        </td>
+                        <td>
+                            <input v-if="user.editing" type="number" v-model="user.age">
+                            <p v-else>
+                                [[ user.age ]]
+                            </p>
+                        </td>
+                        <td>
+                            <select class="browser-default custom-select w-100">
+                                <option v-for="community in user.joined_communities"> [[ community.name ]] </option>
+                            </select>
+                        </td>
+                        <td>
+                            <button v-if="!user.editing" @click="user.editing = true" class="btn btn-outline-secondary btn-sm">
+                                Edit
+                            </button>
+                            <button v-else @click="saveUserChanges(user)" class="btn btn-success btn-sm">
+                                Save
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm ml-2" @click="deleteUser(user)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row justify-content-center">
+                <a class="btn btn-primary" href="#addnewUserForm" role="button">Add New User</a>
+            </div>
+
+            <form class="mt-5 border border-secondary rounded">
+                <div class="mx-4 my-4" id="addnewCommunityForm">
+                    <legend class="font-weight-bold">ADD NEW COMMUNITY</legend>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Name</label>
+                        <input class="form-control" v-model="newCommunityName" type="text" placeholder="Name of community" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Launch Date</label>
+                        <input class="form-control" v-model="newCommunityLaunchDate" type="date">
+                    </div>
+                    <button class="btn btn-primary btn-sm" @click="createCommunity()">
+                        Add New Community
+                    </button>
+                </div>
+            </form>
+
+            <form class="mt-5 border border-secondary rounded">
+                <div class="mx-4 my-4" id="addnewUserForm">
+                    <legend class="font-weight-bold">ADD NEW USER</legend>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Name</label>
+                        <input class="form-control" v-model="newUserName" type="text" placeholder="Name of user" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Username</label>
+                        <input class="form-control" v-model="newUserUsername" type="text" placeholder="Username of user" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Date of Birth</label>
+                        <input class="form-control" v-model="newUserDOB" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Age</label>
+                        <input class="form-control" v-model="newUserAge" type="number" min=1 placeholder="Age of user">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Communities</label>
+                        <select class="form-control browser-default custom-select" v-model="newUserJoined_Communities">
+                            <option v-for="community in communities" v-bind:value="community.id">[[ community.name ]]</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary btn-sm" @click="createUser()">
+                        Add New User
+                    </button>
+                </div>
+            </form>
+
+            <form class="my-5 border border-secondary rounded">
+                <div class="mx-4 my-4" id="editUserCommunities">
+                    <legend class="font-weight-bold">REMOVE USER FROM COMMUNITY</legend>
+                    <div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Select User:</label>
+                            <select class="form-control browser-default custom-select" v-model="removeFromCommunityUser">
+                                <option v-for="user in users" v-bind:value="user">[[ user.name ]]</option>
+                            </select>
+                        </div>
+                        <div class="form-group"></div>
+                            <label class="font-weight-bold">Select Community:</label>
+                            <select class="form-control browser-default custom-select" v-model="removeFromCommunity">
+                                <option v-if="removeFromCommunityUser!=null" v-for="community in removeFromCommunityUser.joined_communities" v-bind:value="community.id">[[ community.name ]]</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm mt-4" @click="removeUserFromCommunity(this.removeFromCommunityUser)">
+                            Remove
+                        </button>
+                    </div>
+                    <legend class="font-weight-bold mx-4">ADD USER TO COMMUNITY</legend>
+                    <div class="mx-4">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Select User:</label>
+                            <select class="form-control browser-default custom-select" v-model="addToCommunityUser">
+                                <option v-for="user in users" v-bind:value="user">[[ user.name ]]</option>
+                            </select>
+                        </div>
+                        <div class="form-group"></div>
+                            <label class="font-weight-bold">Select Community:</label>
+                            <select class="form-control browser-default custom-select" v-model="addToCommunity">
+                                <option v-for="community in communities" v-bind:value="community.id">[[ community.name ]]</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-outline-primary btn-sm my-4 mx-4" @click="addUserToCommunity(this.addToCommunityUser)">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            let myApp = Vue.createApp({
+                delimiters: ["[[" , "]]"],
+                data() {
+                    return {
+                        communities: [],
+                        users: [],
+                        newCommunityName: null,
+                        newCommunityLaunchDate: null,
+                        newUserName: null,
+                        newUserUsername: null,
+                        newUserDOB: null,
+                        newUserAge: null,
+                        newUserJoined_Communities: null,
+                        removeFromCommunityUser: null,
+                        removeFromCommunity: null,
+                        addToCommunityUser: null,
+                        addToCommunity: null,
+                    }
+                },
+                async created() {
+                    this.getAllCommunities()
+                    this.getAllUsers()                     
+                },
+                methods: {
+                    //ajax GET request to get all the communities in the database using the backend
+                    async getAllCommunities() {
+                        let response = await fetch("{% url 'communities api' %}") ;
+                        if (response.ok) {
+                            let data = await response.json() ;
+                            this.communities = data.communities ;
+                        }
+                        else {
+                            alert("Failed to load list of communities") ;
+                        }
+                    },
+
+                    //ajax GET request to get all the users in the database using the backend
+                    async getAllUsers() {
+                        let response = await fetch("{% url 'users api' %}") ;
+                        if (response.ok) {
+                            let data = await response.json() ;
+                            this.users = data.users ;
+                        }
+                        else {
+                            alert("Failed to load list of users")
+                        }  
+                    },
+
+                    //ajax DELETE request to delete a community in the database using the backend
+                    async deleteCommunity(community) {
+                        if (confirm(`Are you sure you want to delete ${community.name}?`)){
+                            let response = await fetch(community.api ,
+                            {
+                                method: "DELETE",
+                                headers: {
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                }
+                            }) ;
+                            if (response.ok) {
+                                this.communities = this.communities.filter(c => c.id != community.id) ;
+                                this.getAllUsers();
+                            }
+                            else {
+                                alert("Failed to delete community") ;
+                            }
+                        }
+                    },
+
+                    //ajax DELETE request to delete a user in the database using the backend
+                    async deleteUser(user) {
+                        if (confirm(`Are you sure you want to delete ${user.name}?`)){
+                            let response = await fetch(
+                                user.api, 
+                                {
+                                    method: "DELETE",
+                                    headers: {
+                                        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                    }
+                                }
+                            )
+                            if (response.ok){
+                                this.users = this.users.filter(u => u.id != user.id) ;
+                                this.getAllCommunities();
+                            }
+                            else{
+                                alert("Failed to delete community") ;
+                            }
+                        }
+                    },
+
+                    //ajax PUT request to edit a community in the database using the backend
+                    async saveCommunityChanges(community) {
+                        let response = await fetch(
+                                community.api, 
+                                {
+                                    method: "PUT",
+                                    headers: {
+                                        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                    },
+                                    body: JSON.stringify({name: community.name, launchDate: community.launch_date})
+                                }
+                            )
+                            if (response.ok){
+                                community.editing = false ;
+                                this.getAllUsers() ;
+                            }
+                            else{
+                                alert("Failed to update community") ;
+                            }
+                    },
+
+                    //ajax PUT request to edit a user in the database using the backend
+                    async saveUserChanges(user) {
+                        let response = await fetch(
+                                user.api, 
+                                {
+                                    method: "PUT",
+                                    headers: {
+                                        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                    },
+                                        body: JSON.stringify({
+                                        name: user.name, username: user.username,
+                                        dob: user.dob, age:user.age,
+                                        removeCommunity: false,
+                                        addCommunity: false,
+                                    })
+                                }
+                            )
+                            if (response.ok){
+                                user.editing = false ;
+                                this.getAllCommunities() ;
+                            }
+                            else{
+                                alert("Failed to update user") ;
+                            }
+                    },
+
+                    //ajax POST request to create a new community in the database using the backend
+                    async createCommunity() {
+                        let response = await fetch("{% url 'create community api' %}",
+                            {
+                                method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                },
+                                body: JSON.stringify({name: this.newCommunityName, launchDate: this.newCommunityLaunchDate})
+                            }
+                        )
+                        if (response.ok){
+                            this.getAllCommunities() ;
+                        }
+                        else{
+                            alert("Failed to create community") ;
+                        }
+                    },
+
+                    //ajax POST request to create a new user in the database using the backend
+                    async createUser() {
+                        let response = await fetch("{% url 'create user api' %}",
+                            {
+                                method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                },
+                                body: JSON.stringify({
+                                    name: this.newUserName, username: this.newUserUsername, dob: this.newUserDOB,
+                                    age:this.newUserAge, joined_communities: this.newUserJoined_Communities
+                                })
+                            }
+                        )
+                        if (response.ok){
+                            this.getAllCommunities() ;
+                            this.getAllUsers() ;
+                        }
+                        else{
+                            alert("Failed to create user") ;
+                        }
+                    },
+
+                    //ajax PUT request to edit user realtionship with communities (remove) in the database using the backend
+                    async removeUserFromCommunity(user) {
+                        let response = await fetch(
+                            user.api, 
+                            {
+                                method: "PUT",
+                                headers: {
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                },
+                                body: JSON.stringify({
+                                    community_id: this.removeFromCommunity,
+                                    removeCommunity: true,
+                                    addCommunity: false
+                                })
+                            }
+                        )
+                        if (response.ok){
+                            this.getAllCommunities() ;
+                            this.getAllUsers() ;
+                            this.removeFromCommunityUser = null ;
+                            this.removeFromCommunity = null ;
+                        }
+                        else{
+                            alert("Failed to remove user from community") ;
+                        }
+                    },
+
+                    //ajax PUT request to edit user realtionship with communities (add) in the database using the backend
+                    async addUserToCommunity(user) {
+                        let response = await fetch(
+                            user.api, 
+                            {
+                                method: "PUT",
+                                headers: {
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                },
+                                body: JSON.stringify({
+                                    community_id: this.addToCommunity,
+                                    removeCommunity: false,
+                                    addCommunity: true
+                                })
+                            }
+                        )
+                        if (response.ok){
+                            this.getAllCommunities() ;
+                            this.getAllUsers() ;
+                            this.addToCommunityUser = null ;
+                            this.addToCommunity = null ;
+                        }
+                        else{
+                            alert("Failed to add user to community") ;
+                        }
+                    }
+                }
+            })
+
+            myApp.mount("#myApp")
+        </script>      
+    </body>
+</html>

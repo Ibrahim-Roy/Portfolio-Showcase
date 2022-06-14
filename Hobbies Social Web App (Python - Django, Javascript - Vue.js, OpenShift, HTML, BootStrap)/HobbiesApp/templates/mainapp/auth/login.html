@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+<div class="vh-100" style="background-color:rgb(129, 167, 224);">
+    <div class='container py-5 h-100'>
+        <div class="align-items-center d-flex justify-content-center h-100">
+            <div class="col-12 col-xl-5 col-lg-6 col-md-8">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h3 style="color: rgb(104, 112, 121); font-size: 200%;">Login</h3>
+                        <div>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div>
+                                    {{ form }}
+                                </div>
+                                <input type="submit" class="btn btn-primary mt-5 col-12"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

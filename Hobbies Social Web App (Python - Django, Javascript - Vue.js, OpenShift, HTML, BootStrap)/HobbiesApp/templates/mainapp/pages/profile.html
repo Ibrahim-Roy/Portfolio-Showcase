@@ -1,0 +1,316 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<div id = 'VueContainer'>
+    {% csrf_token %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card align-items-center d-flex justify-content-center " style="border: none;">
+                    <div class="card-body text-center" style="min-width: 100%; max-width: 100%;">
+                        <div>
+                            <h5 class="text-center">[[user.username]]</h5>
+                            <img v-if="user.image == null" src="{% static 'HobbiesApp/profile-image.png'%}" alt="profile-image" class="rounded" style="max-width: 100%;">
+                            <img v-else v-bind:src="user.image" alt="profile-image" class="rounded img-fluid">
+                            <input @change="img_file_change()" id="profile_image_input" type="file" class="form-control mt-3" placeholder="Email" style="max-width: 100%;">
+                        </div>
+                        <div class="mt-5" style="min-width: 100%; max-width: 100%;">
+                            <h4 class="text-center">Hobbies</h4>
+                            <div id="accordion">
+                                <div v-for="(hobby) in user.hobbies" class="card" style="min-width: 100%; max-width: 100%;">
+                                    <div class="card-header" v-bind:id="'heading' + hobby.id" style="min-width: 100%; max-width: 100%;">
+                                        <h5 class="mb-0" style="min-width: 100%; max-width: 100%;">
+                                            <button class="btn btn-link float-left text-center" 
+                                                data-toggle="collapse"
+                                                v-bind:data-target="'#collapse' + hobby.id" 
+                                                aria-expanded="true" 
+                                                v-bind:aria-controls="'collapse' + hobby.id"
+                                                style="text-decoration: none; color: black; font-size: 110%; min-width: 100%; max-width: 100%;"
+                                                >
+                                                [[ hobby.name ]]
+                                            </button>
+                                            <br>
+                                            <button v-bind:id="hobby.name+'_remove_btn'" class="btn btn-outline-danger btn-sm float-end" @click="removeHobby(hobby)" style="min-width: 100%; max-width: 100%;">
+                                                Remove
+                                            </button><br>
+                                        </h5>
+                                    </div>
+                                    <div v-bind:id="'collapse' + hobby.id" class="collapse" v-bind:aria-labelledby="'heading' + hobby.id" data-parent="#accordion">
+                                        <div class="card-body">
+                                            [[hobby.description]]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5" style="min-width: 100%; max-width: 100%;">
+                            <h4>Friends</h4>
+                            <ul class="list-group">
+                                <li v-for="friend in user.friends" class="list-group-item">
+                                    [[friend.username]]
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="card" style="border: none;">
+                    <div class="card-body">
+                        <div>
+                            <h4 class="text-center">Details</h4>
+                            <div>
+                                <input v-if="editingDetails" type="email" class="form-control mt-3" placeholder="Email" v-model="user.email">
+                                <label v-else class="mt-3" style="font-size: 110%;"><b>Username: </b> <a v-bind:href="'mailto:' + user.email">[[ user.email ]]</a></label>
+                            </div>
+                            <div>
+                                <input v-if="editingDetails" type="text" class="form-control mt-3" placeholder="City" v-model="user.city">
+                                <label v-else class="mt-3" style="font-size: 110%;"><b>City: </b> [[ user.city ]]</label>
+                            </div>
+                            <div>
+                                <input id="edit_dob_input" v-if="editingDetails" type="date" class="form-control mt-3" v-model="user.dob">
+                                <label v-else class="mt-3" style="font-size: 110%;"><b>Date of Birth: </b> [[ user.dob ]]</label>
+                            </div>
+                            <div>
+                                <button id="account_details_edit_btn" v-if="!editingDetails" @click="editingDetails=true" class="btn btn-outline-secondary btn-sm">
+                                    Edit
+                                </button>
+                                <button id="account_details_save_btn" v-else @click="saveDetailChanges" class="btn btn-success btn-sm">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h4 class="text-center">Select Hobbies</h4>
+                            <div>
+                                <select id="select_hobby_input" class="form-control browser-default custom-select" v-model="hobbyToAdd">
+                                    <option v-for="hobby in allHobbies" v-bind:value="hobby.id">[[ hobby.name ]]</option>
+                                </select>
+                            </div>
+                            <br>
+                            <button id="select_hobby_btn" @click="addHobby" class="btn btn-primary float-end">Add Hobbies</button>
+                        </div>
+                        <div class="mt-5">
+                            <h4 class="text-center">Create Hobbies</h4>
+                            <input id="new_hobbie_text_input" type="text" class="form-control mt-3" placeholder="Title" v-model="newHobby.name">
+                            <textarea  id="new_hobbie_description_input" rows="4" class="form-control mt-3" placeholder="Description" v-model="newHobby.description"></textarea>
+                            <span class="text-muted">Limit: 200 Characters</span>
+                            <br>
+                            <button id="create_hobby_btn" @click="createNewHobby" class="btn btn-success float-end">Create Hobby</button>
+                        </div>
+                        <div class="mt-5">
+                            <h4 class="text-center">Friend Requests</h4>
+                            <ul class="list-group">
+                                <li v-for="friendReq in friendRequests" class="list-group-item">
+                                    [[friendReq.from_user.username]]
+                                    <button class="float-end btn btn-outline-primary btn-sm" @click="manage_friend_request(friendReq.id, true)">
+                                        Accept Request
+                                    </button>
+                                    <button class="mr-1 float-end btn btn-outline-danger btn-sm" @click="manage_friend_request(friendReq.id, false)">
+                                        Reject Request
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="border: none;">
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let myApp = Vue.createApp({
+        delimiters: ["[[", "]]"],
+        data() {
+            return {
+                user: {},
+                allHobbies: {},
+                editingDetails: false,
+                newHobby: {},
+                hobbyToAdd: null,
+                friendRequests:{},
+            }
+        },
+        async created() { 
+            this.getAll();
+        },
+        methods: {
+            async getProfile() {
+                let response = await fetch("{{request.user.to_dict.api}}") ;
+                if (response.ok) {
+                    let data = await response.json() ;
+                    this.user = data.user ;
+                }
+                else {
+                    alert("Failed to load user details") ;
+                }
+            },
+            async getAllHobbies() {
+                let response = await fetch("{% url 'hobby api' %}") ;
+                if (response.ok) {
+                    let data = await response.json() ;
+                    this.allHobbies = data.hobbies ;
+                }
+            },
+            async getAllFriendRequests(){
+                let response = await fetch(this.user.friend_request_api);
+                if (response.ok){
+                    let data = await response.json();
+                    this.friendRequests = data.friend_requests;
+                }
+                else{
+                    alert("Failed to load list of friend requests.")
+                }
+            },
+            async getAll() {
+                await this.getProfile() ;
+                await this.getAllHobbies();
+                this.getAllFriendRequests();
+            },
+            async saveDetailChanges() {
+                let user = this.user ;
+                let response = await fetch(
+                    user.api, 
+                    {
+                        method: "PUT",
+                        headers: {
+                            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                        },
+                        body: JSON.stringify({email: user.email, city: user.city, dob: user.dob, addHobby: false, removeHobby: false})
+                    }
+                )
+                if (response.ok) {
+                    this.editingDetails = false ;
+                    this.getProfile() ;
+                }
+                else {
+                    alert("Failed to update details") ;
+                }
+            },
+            async createNewHobby() {
+                let hobby = this.newHobby ;
+                if (hobby.name == null || hobby.description == null) {
+                    alert("Please fill in all the fields");
+                }
+                else {
+                    let response = await fetch( "{% url 'hobby api' %}",
+                        {
+                            method: "POST",
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                    },
+                                    body: JSON.stringify({
+                                        name: hobby.name,
+                                        description: hobby.description,
+                                    }),
+                        }
+                    )
+                    if (response.ok) {
+                        this.newHobby.name = null;
+                        this.newHobby.description = null;
+                        this.getAll() ;
+                    }
+                }
+            },
+            async img_file_change() {
+                let formdata = new FormData()
+                let file = document.getElementById('profile_image_input').files[0]
+                formdata.append('img_file', file)
+                formdata.append('csrfmiddlewaretoken', document.querySelector("[name=csrfmiddlewaretoken").value)
+                let response = await fetch("{% url 'uploadimage' %}",
+                {
+                    method: "POST",
+                    body: formdata
+                }
+                )
+                if (response.ok) {
+                    this.getProfile();
+                }
+            },
+            async addHobby() {
+                let hobby_id = this.hobbyToAdd ;
+                if (hobby_id == null) {
+                    alert("Please select a hobby!") ;
+                }
+                else {
+                    let response = await fetch(
+                        this.user.api, 
+                        {
+                            method: "PUT",
+                            headers: {
+                                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                            },
+                            body: JSON.stringify({id: hobby_id, addHobby: true, removeHobby: false}),
+                        },
+                    )
+                    if (response.ok) {
+                        this.hobbyToAdd = null;
+                        this.getProfile();
+                    }
+                    else {
+                        alert("Hobby could not be added!")
+                    }
+                }
+            },
+            async removeHobby(hobby) {
+                let response = await fetch(
+                    this.user.api, 
+                    {
+                        method: "PUT",
+                        headers: {
+                            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                        },
+                        body: JSON.stringify({id: hobby.id, addHobby: false, removeHobby: true}),
+                    },
+                )
+                if (response.ok) {
+                    this.getProfile();
+                }
+                else {
+                    alert("Hobby could not be removed!")
+                }
+            },
+            async manage_friend_request(user_request_id, accept_bool) {
+                let response = await fetch( this.user.friend_request_api,
+                    {
+                        method: "DELETE",
+                                headers: {
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                },
+                                body: JSON.stringify({
+                                    request_id : user_request_id,
+                                    accept: accept_bool,
+                                }),
+                    }
+                )
+                if (response.ok) {
+                    if(accept_bool) {
+                        alert("Friend request accepted!");
+                        this.getProfile();
+                    }
+                    else {
+                        alert("Friend request rejected!");
+                    }
+                    this.getAllFriendRequests();
+                }
+                else {
+                    alert("Unable to accept friend request!");
+                }
+            }
+        },
+    })
+    myApp.mount('#VueContainer')
+</script>
+{% endblock %}

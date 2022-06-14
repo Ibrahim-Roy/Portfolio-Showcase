@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: bac3f7409e75f614d9129ebba6857b31
+  - enabled: 1
+    path: Assets/Scenes/Main World.unity
+    guid: ab9e71c39b711ab4abbc3c10428a882f
+  - enabled: 1
+    path: Assets/Scenes/FishingMinigame.unity
+    guid: 4bdfc4f499fa44a458e36ba3944daeb3
+  - enabled: 1
+    path: Assets/Scenes/pyramid.unity
+    guid: ff54f6f0a121cdc4b8d36386d43ec58d
+  - enabled: 1
+    path: Assets/Scenes/Cave Scene.unity
+    guid: ecb43aa0e464ac0489ac8f0dfabff103
+  - enabled: 1
+    path: Assets/Scenes/ending.unity
+    guid: 46067ab3f81efb742859250d9f6a615b
+  m_configObjects: {}

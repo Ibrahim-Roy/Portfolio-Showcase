@@ -1,0 +1,142 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<div id = 'VueContainer'>
+    {% csrf_token %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="filter-inputs">
+                <label class="font-weight-bold">Filter by city</label>
+                <input class="form-control m-1 w-50" id="city-input" type="text" v-model="city" placeholder="City name...">
+            </div>
+            <div class="form-outline">
+                <label class="font-weight-bold">Filter by range (both min and max are required)</label>
+                <br>
+                <input class="form-control m-1 w-25 d-inline" id="min-age-input"  type="number" v-model="min_age" placeholder="Minimum age..."/>
+                <input class="form-control m-1 w-25 d-inline" id="max-age-input"  type="number" v-model="max_age" placeholder="Maximum age..."/>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="accordion" id="accordion-users">
+                <div class="accordion-item" v-for="(user, index) in filteredUsers">
+                    <h2 class="accordion-header" :id="'heading' + index">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse' + index" aria-expanded="false" :aria-controls="'collapse' + index">
+                            [[user.username]]
+                        </button>
+                    </h2>
+                    <div :id="'collapse' + index" class="accordion-collapse collapse" :aria-labelledby="'heading' + index" data-bs-parent="#accordion-users">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p><strong>Number of hobbies in common: </strong>[[user.common_hobbies_count]]</p>
+                                    <p><strong>Age: </strong>[[user.age]]</p>
+                                    <p><strong>City: </strong>[[user.city]]</p>
+                                    <button v-if="friend_ids.includes(user.id)" class="btn btn-success btn-sm">
+                                        Friends
+                                    </button>
+                                    <button v-else class="btn btn-outline-primary btn-sm" @click="send_friend_request(user.friend_request_api)">
+                                        Send Request
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <img v-if="user.profile_image==null" src="{% static 'HobbiesApp/profile-image.png'%}" alt="profile-image" class="w-50 float-right">
+                                    <img v-else v-bind:src="user.profile_image" alt="profile-image" class="w-50 float-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    let myApp = Vue.createApp({
+        delimiters: ["[[", "]]"],
+        data() {
+            return {
+                friend_ids: [],
+                similar_users: [],
+                city: "",
+                min_age: "",
+                max_age: "",
+            }
+        },
+        async created() {
+            await this.get_friends();
+            let response = await fetch("{{similar_hobbies_api}}");
+            if (response.ok) {
+                let data = await response.json();
+                this.similar_users = data.users;
+            }
+            else {
+                alert("Failed to load user details");
+            }
+            console.log(this.similar_users);
+        },
+        methods: {
+            async get_friends() {
+                let response = await fetch( "{{request.user.to_dict.api}}");
+                if (response.ok) {
+                    let data = await response.json();
+                    let friends = data.user.friends;
+                    for(let i=0; i<friends.length; i++) {
+                        this.friend_ids.push(friends[i].id);
+                    }
+                }
+                else {
+                    alert("Failed to load list of friends");
+                }
+            },
+            async send_friend_request(api) {
+                let response = await fetch( api,
+                    {
+                        method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                                },
+                                body: JSON.stringify({
+                                    from_user_id : "{{request.user.id}}",
+                                }),
+                    }
+                )
+                if (response.ok) {
+                    alert("Friend request sent!");
+                }
+                else if (response.status = 400){
+                    result = await response.text()
+                    alert(result)
+                }
+                else{
+                    alert("Unable to send friend request!");
+                }
+            }
+        },
+        computed: {
+            filteredUsers: function() {
+                let filtered_users = this.similar_users;
+                if (this.city != "" || this.city != null) {
+                    filtered_users = filtered_users.filter((user) => {
+                        return user.city.toLowerCase().match(this.city.toLowerCase());
+                    });
+                }
+                if (this.min_age !== "" && this.max_age !== "") {
+                    filtered_users = filtered_users.filter((user) => {
+                        if (user.age >= this.min_age && user.age <= this.max_age) {
+                            return true;
+                        }
+                        return false;
+                    });
+                }
+                return filtered_users
+            }
+        },
+    })
+    myApp.mount('#VueContainer')
+</script>
+{% endblock %}

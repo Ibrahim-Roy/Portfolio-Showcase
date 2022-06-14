@@ -1,0 +1,768 @@
+fileFormatVersion: 2
+guid: 1b282d5f86ee8054286a752c723ddad8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8746060471561786319
+    second: troll-sprite-sheet_0
+  - first:
+      213: -3899409905348180635
+    second: troll-sprite-sheet_1
+  - first:
+      213: 5185704145624172081
+    second: troll-sprite-sheet_2
+  - first:
+      213: 1749738896072523684
+    second: troll-sprite-sheet_3
+  - first:
+      213: -4993535668970012603
+    second: troll-sprite-sheet_4
+  - first:
+      213: 7551398311707845824
+    second: troll-sprite-sheet_5
+  - first:
+      213: 836758589574395423
+    second: troll-sprite-sheet_6
+  - first:
+      213: 7908298828909883927
+    second: troll-sprite-sheet_7
+  - first:
+      213: -1473209644633953898
+    second: troll-sprite-sheet_8
+  - first:
+      213: 803398350123677411
+    second: troll-sprite-sheet_9
+  - first:
+      213: -717394836727060863
+    second: troll-sprite-sheet_10
+  - first:
+      213: -5585697588534144578
+    second: troll-sprite-sheet_11
+  - first:
+      213: -7340344319952789976
+    second: troll-sprite-sheet_12
+  - first:
+      213: -7146563051403440564
+    second: troll-sprite-sheet_13
+  - first:
+      213: 5165764245121232556
+    second: troll-sprite-sheet_14
+  - first:
+      213: -9067616072786116885
+    second: troll-sprite-sheet_15
+  - first:
+      213: 2310544182243530154
+    second: troll-sprite-sheet_16
+  - first:
+      213: -6580914972552512987
+    second: troll-sprite-sheet_17
+  - first:
+      213: -8351909475678700866
+    second: troll-sprite-sheet_18
+  - first:
+      213: 8412965550394548678
+    second: troll-sprite-sheet_19
+  - first:
+      213: -5414194034020305672
+    second: troll-sprite-sheet_20
+  - first:
+      213: -4500741114036405341
+    second: troll-sprite-sheet_21
+  - first:
+      213: 199797409537763806
+    second: troll-sprite-sheet_22
+  - first:
+      213: -7708624869069285494
+    second: troll-sprite-sheet_23
+  - first:
+      213: 4128742908040621052
+    second: troll-sprite-sheet_24
+  - first:
+      213: -4884030209434572845
+    second: troll-sprite-sheet_25
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: troll-sprite-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 619
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c6978f650cf9680800000000000000
+      internalID: -8746060471561786319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 620
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565051ed95382e9c0800000000000000
+      internalID: -3899409905348180635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 618
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1360336027257f740800000000000000
+      internalID: 5185704145624172081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 616
+        width: 68
+        height: 71
+      alignment: 9
+      pivot: {x: 0.7132353, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af36166142584810800000000000000
+      internalID: 1749738896072523684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 617
+        width: 67
+        height: 54
+      alignment: 9
+      pivot: {x: 0.73731345, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540ccc514c563bab0800000000000000
+      internalID: -4993535668970012603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 603
+        width: 76
+        height: 81
+      alignment: 9
+      pivot: {x: 0.68684214, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4a4d661c4fbc860800000000000000
+      internalID: 7551398311707845824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 608
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16b65ef083cc9b00800000000000000
+      internalID: 836758589574395423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 512
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712bfca82ebefbd60800000000000000
+      internalID: 7908298828909883927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 509
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699e9e332ab1e8be0800000000000000
+      internalID: -1473209644633953898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 508
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e6b148fa8e362b00800000000000000
+      internalID: 803398350123677411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 501
+        width: 68
+        height: 71
+      alignment: 9
+      pivot: {x: 0.30147058, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1862f29623d4b06f0800000000000000
+      internalID: -717394836727060863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 502
+        width: 67
+        height: 54
+      alignment: 9
+      pivot: {x: 0.2597015, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb19aa433ad9b72b0800000000000000
+      internalID: -5585697588534144578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 494
+        width: 76
+        height: 81
+      alignment: 9
+      pivot: {x: 0.3223684, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e58285bbbd12a90800000000000000
+      internalID: -7340344319952789976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 503
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e8a24d4ce42dc90800000000000000
+      internalID: -7146563051403440564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 420
+        width: 34
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae6dd7263b70b740800000000000000
+      internalID: 5165764245121232556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 419
+        width: 35
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beef5fd593b592280800000000000000
+      internalID: -9067616072786116885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 415
+        width: 45
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5987421b3b01020800000000000000
+      internalID: 2310544182243530154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 414
+        width: 31
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a35fb13b4eba4a0800000000000000
+      internalID: -6580914972552512987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 417
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebab3f9059e081c80800000000000000
+      internalID: -8351909475678700866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 417
+        width: 34
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c1add2289bd0c470800000000000000
+      internalID: 8412965550394548678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 326
+        width: 33
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f43e21363becd4b0800000000000000
+      internalID: -5414194034020305672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 325
+        width: 35
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab3ddf7dc72a81c0800000000000000
+      internalID: -4500741114036405341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 325
+        width: 51
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9aa867fa2d5c200800000000000000
+      internalID: 199797409537763806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 324
+        width: 32
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a87126c0686750590800000000000000
+      internalID: -7708624869069285494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 321
+        width: 49
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfbaca2cccd3c4930800000000000000
+      internalID: 4128742908040621052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-sprite-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 327
+        width: 35
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d72066b660783cb0800000000000000
+      internalID: -4884030209434572845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

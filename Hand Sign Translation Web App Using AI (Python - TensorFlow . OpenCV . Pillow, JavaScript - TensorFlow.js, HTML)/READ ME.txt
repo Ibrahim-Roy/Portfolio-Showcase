@@ -52,8 +52,3 @@ The final model created can be tested at the web application. The
 application will work, however an internet connection is required
 as even locally the web application needs to fetch the model from
 GitHub
-
-Showcase Video
-----------------
-The showcase video can be viewed at the following google drive link
-https://drive.google.com/file/d/1pmxKW2dKyl61DUGLFlbfYKb_dmWXj7Jl/view?usp=sharing

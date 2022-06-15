@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FDM Group</title>
+        <link rel="stylesheet" href="./css/scheduler_style.css">
+        <link rel="stylesheet" href="./css/schedule_table.css">
+        <link rel="stylesheet" href="./css/reset.css">
+        <script>
+            var loggedIn = JSON.parse(localStorage.getItem("LoggedIn"));
+            if(loggedIn == null){
+                window.location.replace("index.html");
+            }
+            else{
+                if(loggedIn.type != "Scheduler"){
+                    window.location.replace("index.html");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="inner_header">
+                <div class="FDM">
+                    <h2>FDM <span>Group</span></h2>
+                </div>
+                <nav>
+                    <ul>
+                        <a href="index.html"><li>Home</li></a>
+                        <a href="javascript:logoutButtonHandler()"><li>Logout</li></a>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <h1>Create Course</h1><br>
+                <form method="post" onsubmit="createCourseButton()" name="courseForm">
+                    <fieldset>
+                        <p>
+                            <label for="cname">Course name:</label>
+                            <input type="text" id="cname" name="cname">
+                        </p>
+                        <p>
+                            <label for="ctype">Course type:</label>
+                            <select name="ctype" id="ctype">
+                                <option selected="selected" value="">Select a type</option>
+                                <option value="Graduate Programme">Graduate Programme </option>
+                                <option value="Returners to work">Returners to work</option>
+                                <option value="Ex forces">Ex forces</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="cdesc">Course description:</label>
+                            <textarea id="cdesc" placeholder="Description..." name="cdesc" rows="4" cols="45" maxlength="250"></textarea>
+                        </p>
+                        <p>
+                            <input type="submit" value="Submit" name="Submit">
+                            <input type="reset" value="Clear" onclick="return clearText()">
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+            <br>
+            <div class="container">
+                <h1>Create Module</h1><br>
+                <div id="newModuleForm">
+                    <form method="post" onsubmit="addNewModuleButton()" name="newModuleForm">
+                        <fieldset>
+                            <p>
+                                <label for="mname">Module name:</label>
+                                <input type="text" id="mname" name="mname">
+                            </p>
+                            <p>
+                                <label for="mcourse">Module course:</label>
+                                <select name="mcourse" id="mcourse">
+                                    <option selected="selected" value="">Select a course</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="mdesc">Module description:</label>
+                                <textarea id="mdesc" placeholder="Description..." name="mdesc" rows="4" cols="45" maxlength="250"></textarea>
+                            </p>
+                            <p>
+                                <input type="submit" value="Submit" name="Submit">
+                                <input type="reset" value="Clear" onclick="return clearText()">
+                            </p>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <h1>Schedule Trainer</h1><br>
+                <form method="POST" onsubmit="scheduleHandler()" name="scheduleTrainerForm">
+                    <fieldset>
+                        <p>
+                            <label for="trainerModuleSelect">Select Module:</label>
+                            <select name="trainerModuleSelect" id="trainerModuleSelect">
+                                <option selected="selected" value="">Select a module</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="trainerSelect">Select trainer:</label>
+                            <select name="trainerSelect" id="trainerSelect">
+                                <option selected="selected" value="">Select a trainer</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="trainerTimeSelect">Select Time:</label>
+                            <select name="trainerTimeSelect" id="trainerTimeSelect">
+                                <option selected="selected" value="">Select a time</option>
+                                <option value="0">09:00 - 11:00</option>
+                                <option value="1">11:00 - 13:00</option>
+                                <option value="2">13:00 - 15:00</option>
+                                <option value="3">15:00 - 17:00</option>
+                                <option value="4">17:00 - 19:00</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="trainerDateSelect">Select Day:</label>
+                            <select name="trainerDateSelect" id="trainerDateSelect">
+                                <option selected="selected" value="">Select a day</option>
+                                <option value="0">Monday</option>
+                                <option value="1">Tuesday</option>
+                                <option value="2">Wednesday</option>
+                                <option value="3">Thursday</option>
+                                <option value="4">Friday</option>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="submit" value="Submit" name="Submit">
+                            <input type="reset" value="Clear" onclick="return clearText()">
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+            <br>
+            <div class="container">
+                <h1>View trainer schedule:</h1><br>
+                <form method="POST" onsubmit="viewtrainerAvailibilityButton()" name="viewtrainerAvailibilityForm">
+                    <fieldset>
+                        <p>
+                            <label for="trainerAvailibilitySelect">Select trainer:</label>
+                            <select name="trainerAvailibilitySelect" id="trainerAvailibilitySelect">
+                                <option selected="selected" value="">Select a trainer</option>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="submit" value="Submit" name="Submit">
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+            <table id="trainerAvailibilityTable" ></table>
+        </section>
+        <script src="Course.js"></script>
+        <script>loadExistingObjects()</script>
+    </body>
+</html>

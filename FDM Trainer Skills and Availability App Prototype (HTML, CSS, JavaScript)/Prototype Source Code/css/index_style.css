@@ -1,0 +1,95 @@
+html { /*Makes the scrolling smooth and doesn't just jump straight to the webpage*/
+    scroll-behavior: smooth;
+}
+header { /* creating the header where the navbar will be placed, giving it the wanted sizes and colour*/
+    width: 100%;
+    display: block;
+    background-color: #101010;
+    position: fixed;
+}
+#home{ /*styling the background image*/
+    background-image: url(../img/background.jpg); /*source: https://wallpaperaccess.com/motherboard*/
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.inner_header {/*An inner header to separate the navbar from the sides*/
+    width: 70%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.FDM { /*editing the position of FDM Group name in the navbar*/
+    height: 100%;
+    padding-top: 25px;
+    display: table;
+    float: left;
+}
+.FDM h2 {	/*styling the FDM Group name*/
+    color: white;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 32px;
+    font-weight: lighter;
+}
+.FDM h2 span {/*giving a nice fade colour "Group" in the navbar*/
+    font-weight: bold;
+    background: -webkit-linear-gradient(white, darkgreen);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+nav{/*placing the nav items to the right of the navbar*/
+    float: right;
+    height: 100%;
+}
+nav a {	/*styling the navbar items*/
+    height: 100%;
+    display: table;
+    float: left;
+    text-decoration: none;
+    padding: 36px 20px;
+}	/*making the background turn white when the user hovers the item*/
+header nav a:hover {
+    background-color: white;
+    transition-duration: 1.5s;
+}
+header nav a:hover li{	/*turning the text green when the user hovers over the item*/
+    color: darkgreen;
+    transition-duration: 1s;
+}
+nav a li { /*positioning each item inside its navbar box*/
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    color: white;
+    font-size: 16px;
+}
+.container{ /*styling the container in which all the information will be kept inside*/
+    background: #f9f9f9;
+    max-width: 60%;
+    margin: 0 auto;
+    font-size: 24px;
+    padding: 25px;
+}
+section #welcome{
+    font-size: 50px;
+    font-weight: bold;
+    padding: 25px;
+    text-align: center;
+}
+section #scheduling, #trainer, #trainee { /*styling all the sections that will be inside the containers*/
+    font-size: 30px;
+    font-weight: bold;
+    padding: 25px;
+    text-align: center;
+}
+footer { /*styling the footer*/
+    padding-top: 20px;
+    padding-left: 20px;
+    background: white;
+    font-size: 24px;
+    right: 10px;
+}

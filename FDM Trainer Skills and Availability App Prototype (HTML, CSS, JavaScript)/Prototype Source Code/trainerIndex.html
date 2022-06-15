@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Trainer Index</title>
+        <link rel="stylesheet" href="./css/login_style.css">
+        <link rel="stylesheet" href="./css/schedule_table.css">
+        <link rel="stylesheet" href="./css/reset.css">
+        <script>
+            var loggedIn = JSON.parse(localStorage.getItem("LoggedIn"));
+            if(loggedIn == null){
+                window.location.replace("index.html");
+            }
+            else{
+                if(loggedIn.type != "Trainer"){
+                    window.location.replace("index.html");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="inner_header">
+                <div class="FDM">
+                    <h2>FDM <span>Group</span></h2>
+                </div>
+                <nav>
+                    <ul>
+                        <a href="index.html"><li>Home</li></a>
+                        <a href="index.html"><li>Logout</li></a>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <button id="viewTrainerScheduleB" onclick="trainerViewScheduleHandler()">View Schedule</button>
+        <table id="timetable">
+        </table>
+        <script src="Course.js"></script>
+    </body>
+</html>

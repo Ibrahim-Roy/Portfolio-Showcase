@@ -1,0 +1,31 @@
+#timetable, #trainerAvailibilityTable{
+   padding: 20px;
+   position: relative;
+   top: 200px;
+   width: 1200px;
+   height:auto;
+   margin: auto;
+   text-align: center;
+   font-size: 24px;
+   padding: 25px;
+   background-color: rgb(224, 222, 222);
+   border-collapse: collapse;
+}
+#viewTrainerScheduleB{
+   padding: 100px;
+   position:relative;
+   top: 200px;
+   width: auto;
+   height:auto;
+   margin: 50px;
+   text-align: center;
+   font-size: 24px;
+   padding: 25px;
+   margin-top: auto;
+   margin-left: 600px;
+}
+
+#timetable td, #trainerAvailibilityTable td{
+   border: 0.1em solid black;
+   padding: 20px;
+} 
